@@ -13,7 +13,16 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+/*
+手順書になかった設定
+https://wonwon-eater.com/laravel-sanctum-vue/
+*/
+// 'auth:api'を'auth:sanctum'に修正
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+  return $request->user();
+});
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('auth')->group(function () {
+  Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+  Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 });

@@ -29,6 +29,7 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    // 他ドメインの場合、trueにする
+    'supports_credentials' => true,
 
 ];
